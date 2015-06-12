@@ -17,6 +17,7 @@ option( BUILD_PYTHON "Build Python bindings" ON )
 option( BUILD_JAVA "Build Java bindings" ON )
 #set it to OFF by default while it is not fully tested and thus officially supported
 option( BUILD_RUBY "Build Ruby bindings" OFF )
+option( BUILD_SCILAB "Build Scilab bindings" OFF )
 
 enable_testing ()
 macro ( cgal_python_test TESTNAME_SRC )
@@ -52,6 +53,9 @@ if ( CGAL_FOUND )
     SET(CMAKE_SWIG_FLAGS "-I${CMAKE_CURRENT_SOURCE_DIR}")
     include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+    if (NOT BUILD_SCILAB)
+      message(STATUS "BUILD_SCILAB is set to OFF: no CGAL-bindings for Scilab will be generated.")
+    endif()
     if (${BUILD_RUBY})
       FIND_PACKAGE(Ruby)
       if (NOT RUBY_FOUND)  
@@ -79,7 +83,10 @@ if ( CGAL_FOUND )
     endif()
     
     SET (COMMON_LIBRARIES_PATH "${CMAKE_CURRENT_BINARY_DIR}/lib" CACHE PATH "Path where libraries common to all target languages are created.")
-    
+
+    if (BUILD_SCILAB)
+      SET (SCILAB_OUTDIR_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/build-scilab" CACHE PATH "Scilab-specific files output directory prefix.")
+    endif()
     if (RUBY_FOUND)
       SET (RUBY_OUTDIR_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/build-ruby" CACHE PATH "RUBY specific files output directory prefix: the CGAL directory will contain Ruby generated files and libraries.")
       
