@@ -300,7 +300,7 @@
 #endif
 
 //operator renaming for languages that does not support them
-#ifdef SWIGJAVA
+#if defined(SWIGJAVA) || defined(SWIGSCILAB)
 %rename(plus) operator+;
 %rename(minus) operator-;
 %rename(times) operator*;
