@@ -120,7 +120,7 @@ MACRO(ADD_SWIG_CGAL_RUBY_MODULE packagename)
 ENDMACRO(ADD_SWIG_CGAL_RUBY_MODULE)
 
 MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
-  SET (MODULENAME "CGAL_${packagename}")
+  SET (MODULENAME "CGAL_${packagename}_Scilab")
   SET (INTERFACE_FILES  "CGAL_${packagename}.i")
 
   INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
@@ -140,10 +140,9 @@ MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
     #and it requires that the shared library containing the bindings be in the
     #same directory.
     SET (CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
+    SET (CMAKE_SWIG_FLAGS -module CGAL_${packagename}_Scilab -DSWIG_CGAL_${packagename}_MODULE)
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../User_packages/${packagename}/extensions.i")
-      SET(CMAKE_SWIG_FLAGS  -DSWIG_CGAL_${packagename}_MODULE -DSWIG_CGAL_HAS_${packagename}_USER_PACKAGE)
-    else()
-      SET(CMAKE_SWIG_FLAGS  -DSWIG_CGAL_${packagename}_MODULE)
+      SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DSWIG_CGAL_HAS_${packagename}_USER_PACKAGE)
     endif()
     SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
     SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
