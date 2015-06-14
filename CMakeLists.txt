@@ -84,9 +84,6 @@ if ( CGAL_FOUND )
     
     SET (COMMON_LIBRARIES_PATH "${CMAKE_CURRENT_BINARY_DIR}/lib" CACHE PATH "Path where libraries common to all target languages are created.")
 
-    if (BUILD_SCILAB)
-      SET (SCILAB_OUTDIR_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/build-scilab" CACHE PATH "Scilab-specific files output directory prefix.")
-    endif()
     if (RUBY_FOUND)
       SET (RUBY_OUTDIR_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/build-ruby" CACHE PATH "RUBY specific files output directory prefix: the CGAL directory will contain Ruby generated files and libraries.")
       

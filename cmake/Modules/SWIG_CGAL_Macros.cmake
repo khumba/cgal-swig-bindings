@@ -134,15 +134,21 @@ MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
   #Build bindings for scilab
   IF (BUILD_SCILAB)
     INCLUDE_DIRECTORIES("/usr/include/scilab")  # TODO Don't hardcode this path.
-    SET (CMAKE_SWIG_OUTDIR "${SCILAB_OUTDIR_PREFIX}/CGAL")
+    #We don't use a custom SCILAB_OUTDIR_PREFIX like other languages do.  The
+    #loader.sce for each package gets created in the current binary directory
+    #("CGAL_SWIG/${packagename}/") seemingly regardless of CMAKE_SWIG_OUTDIR,
+    #and it requires that the shared library containing the bindings be in the
+    #same directory.
+    SET (CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../User_packages/${packagename}/extensions.i")
       SET(CMAKE_SWIG_FLAGS  -DSWIG_CGAL_${packagename}_MODULE -DSWIG_CGAL_HAS_${packagename}_USER_PACKAGE)
     else()
       SET(CMAKE_SWIG_FLAGS  -DSWIG_CGAL_${packagename}_MODULE)
     endif()
-    SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${SCILAB_OUTDIR_PREFIX}/CGAL")
-    SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${SCILAB_OUTDIR_PREFIX}/CGAL")
-    SET(CMAKE_MODULE_OUTPUT_DIRECTORY "${SCILAB_OUTDIR_PREFIX}/CGAL")
+    SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(CMAKE_MODULE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
     SWIG_ADD_MODULE(${MODULENAME} scilab ${INTERFACE_FILES} ${object_files})
+    SWIG_LINK_LIBRARIES(${MODULENAME} ${libstolinkwith})
   ENDIF()
 ENDMACRO(ADD_SWIG_CGAL_SCILAB_MODULE)
