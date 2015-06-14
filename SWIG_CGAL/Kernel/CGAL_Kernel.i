@@ -63,6 +63,15 @@ SWIG_CGAL_add_java_loadLibrary(CGAL_Kernel)
   #include <SWIG_CGAL/Common/Iterator.h>
 %}
 
+// Scilab header files define macros such as Min, Max, _t, _d.  These names
+// conflict with regular things in CGAL header files, which are normally
+// included after these macros are defined, causing compiler errors.  Currently,
+// we can fix this by including this CGAL header at the very start of the
+// generated bindings.
+%begin %{
+  #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+%}
+
 //typemaps for Polygon_2
 #if !SWIG_CGAL_NON_SUPPORTED_TARGET_LANGUAGE
 SWIG_CGAL_input_iterator_typemap_in(Point_range_2,Point_2,Point_2,Point_2::cpp_base,SWIGTYPE_p_Point_2,"(LCGAL/Kernel/Point_2;)J",insert)
