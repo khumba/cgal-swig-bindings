@@ -1,0 +1,58 @@
+- Vector_2
+  - perpendicular
+- Curve_2
+  - is_line
+  - is_ray
+  - is_segment
+  - source
+  - target
+  - to_vector
+- Point_2
+  - x
+  - y
+- Line_2
+- Segment_2
+- Ray_2
+- X_monotone_curve_2
+
+- Arrangement_2
+  - insert_at_vertices
+  - insert_in_face_interior
+  - merge_edge
+  - number_of_edges
+  - number_of_faces
+  - number_of_vertices
+  - remove_edge
+  - remove_isolated_vertex
+  - unbounded_face
+  - Iterating over vertices: vertices_begin, vertices_end, Vertex_iterator.
+  - Iterating over edges: edges_begin, edges_end, Edge_iterator.
+  - Iterating over faces: faces_begin, faces_end, Face_iterator.
+
+- Arrangement_2::Vertex_handle
+  - data
+  - degree
+  - incident_halfedges
+  - is_at_open_boundary
+  - is_isolated
+  - point
+  - set_data
+
+- Arrangement_2::Halfedge_handle
+  - curve
+  - data
+  - direction
+  - face
+  - set_data
+  - source
+  - target
+  - twin
+
+- Arrangement_2::Face_handle
+  - data
+  - outer_ccb
+  - set_data
+
+- CGAL::insert
+
+- insert_non_intersecting_curve
