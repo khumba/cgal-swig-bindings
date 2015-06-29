@@ -1,0 +1,10 @@
+class Triangle_3
+trait equatable
+member bbox
+member deepcopy
+member has_on
+member is_degenerate
+member squared_area
+member supporting_plane
+member toString
+member vertex

@@ -133,6 +133,19 @@ MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
 
   #Build bindings for scilab
   IF (BUILD_SCILAB)
+    #Generate files needed for Scilab function renaming.
+    ADD_CUSTOM_COMMAND(
+      OUTPUT scilab-renames.i sciloader.sce
+      MAIN_DEPENDENCY "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
+      COMMAND "${CMAKE_SOURCE_DIR}/tools/scilab-rename-gen.bash"
+      --input "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
+      --out-swig scilab-renames.i
+      --out-scilab sciloader.sce
+      VERBATIM
+      COMMENT "Generating Scilab renames for package ${packagename}"
+      )
+
+    #Create a SWIG module for Scilab.
     INCLUDE_DIRECTORIES("/usr/include/scilab")  # TODO Don't hardcode this path.
     #We don't use a custom SCILAB_OUTDIR_PREFIX like other languages do.  The
     #loader.sce for each package gets created in the current binary directory
@@ -147,6 +160,7 @@ MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
     SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
     SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
     SET(CMAKE_MODULE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(SWIG_MODULE_${MODULENAME}_EXTRA_DEPS scilab-renames.i)
     SWIG_ADD_MODULE(${MODULENAME} scilab ${INTERFACE_FILES} ${object_files})
     SWIG_LINK_LIBRARIES(${MODULENAME} ${libstolinkwith})
   ENDIF()

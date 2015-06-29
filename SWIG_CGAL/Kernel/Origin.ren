@@ -1,0 +1,3 @@
+class Origin
+member operator+
+member operator-

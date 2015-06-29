@@ -1,0 +1,37 @@
+class Polygon_2
+trait equatable
+member area
+member bbox
+member bottom_vertex
+member bounded_side
+member clear
+member deepcopy
+member erase
+member has_on_boundary
+member has_on_bounded_side
+member has_on_negative_side
+member has_on_positive_side
+member has_on_unbounded_side
+member insert
+member is_clockwise_oriented is_cw_oriented
+member is_collinear_oriented
+member is_convex
+member is_counterclockwise_oriented is_ccw_oriented
+member is_empty
+member is_simple
+member left_vertex
+member orientation
+member oriented_side
+member push_back
+member reverse_orientation
+member right_vertex
+member set
+member size
+member toString
+member top_vertex
+// These are defined in CGAL_Kernel.i:
+member edges
+member edges_circulator
+// insert  (Already exists above.)
+member vertices
+member vertices_circulator

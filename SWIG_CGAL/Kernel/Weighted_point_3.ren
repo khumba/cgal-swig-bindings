@@ -1,0 +1,9 @@
+class Weighted_point_3
+trait equatable
+member deepcopy
+member point
+member toString
+member weight
+member x
+member y
+member z

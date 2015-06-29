@@ -1,0 +1,12 @@
+class Line_3
+trait equatable
+member deepcopy
+member direction
+member has_on
+member is_degenerate
+member opposite
+member perpendicular_plane
+member point
+member projection
+member toString
+member to_vector

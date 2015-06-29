@@ -1,0 +1,16 @@
+class Tetrahedron_3
+trait equatable
+member bbox
+member bounded_side
+member deepcopy
+member has_on_boundary
+member has_on_bounded_side
+member has_on_negative_side
+member has_on_positive_side
+member has_on_unbounded_side
+member is_degenerate
+member orientation
+member oriented_side
+member toString
+member vertex
+member volume

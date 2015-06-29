@@ -1,0 +1,13 @@
+class Bbox_2
+trait equatable
+member deepcopy
+member dimension
+member max
+member min
+member operator+
+member operator+=
+member toString
+member xmax
+member xmin
+member ymax
+member ymin
