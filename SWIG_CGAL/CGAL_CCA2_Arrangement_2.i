@@ -1,4 +1,4 @@
-%module (package="CCA2") CGAL_Arrangement_2_vector
+%module (package="CCA2") CGAL_CCA2_Arrangement_2d
 
 %{
 #include <SWIG_CGAL/Kernel/Vector_2.h> 
