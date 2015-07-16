@@ -17,28 +17,58 @@
 #include <SWIG_CGAL/Kernel/Ray_2.h>
 #include <SWIG_CGAL/Kernel/Segment_2.h>
 #include <SWIG_CGAL/Kernel/Vector_2.h>
+#include <SWIG_CGAL/Common/Iterator.h>
+#include <SWIG_CGAL/Common/Wrapper_iterator_helper.h>
 #include <SWIG_CGAL/Kernel/Arrangement_2_typedefs.h>
 
 // Direct CGAL includes
 #include <CGAL/Arrangement_2.h>
 #include <CGAL/Arr_linear_traits_2.h>
+#include <CGAL/Arr_extended_dcel.h>
 #include <CGAL/Arrangement_on_surface_2.h>
 #include <CGAL/Arrangement_2/Arr_default_planar_topology.h>
+#include <SWIG_CGAL/Kernel/Arr_Cglab_arr_datum.h>
 
+//typedef CGAL::Exact_predicates_inexact_constructions_kernel EPIC_Kernel;
+typedef CGAL::Arr_linear_traits_2<EPIC_Kernel> Arr_traits;
+typedef CGAL::Arr_extended_dcel<Arr_traits, Cglab_arr_datum, Cglab_arr_datum, Cglab_arr_datum> Arr_dcel;
+typedef CGAL::Arrangement_2<Arr_traits,Arr_dcel> Arrangement_2d;
+
+typedef Arr_traits::Vector_2 Vector_2;
+typedef Arr_traits::Curve_2 Curve_2;
+typedef Arr_traits::Point_2 Point_2;
+typedef Arr_traits::Line_2 Line_2;
+typedef Arr_traits::Ray_2 Ray_2;
+typedef Arr_traits::Segment_2 Segment_2;
+typedef Arr_traits::X_monotone_curve_2 X_monotone_curve_2;
+
+typedef Arrangement_2d::Vertex_handle Vertex_handle;
+typedef Arrangement_2d::Halfedge_handle Halfedge_handle;
+typedef Arrangement_2d::Face_handle Face_handle;
+typedef Arrangement_2d::Vertex_const_handle Vertex_const_handle;
+typedef Arrangement_2d::Halfedge_const_handle Halfedge_const_handle;
+typedef Arrangement_2d::Face_const_handle Face_const_handle;
+typedef Arrangement_2d::Vertex_iterator Vertex_iterator;
+typedef Arrangement_2d::Halfedge_iterator Halfedge_iterator;
+typedef Arrangement_2d::Edge_iterator Edge_iterator;
+typedef Arrangement_2d::Face_iterator Face_iterator;
+typedef Arrangement_2d::Halfedge_around_vertex_circulator Halfedge_around_vertex_circulator;
+typedef Arrangement_2d::Ccb_halfedge_circulator Ccb_halfedge_circulator;
+typedef Arrangement_2d::Unbounded_face_iterator Unbounded_face_iterator;
 
 class SWIG_CGAL_KERNEL_DECL Arrangement_2{
-   EPIC_Kernel:: Arrangement_2 data;
+   Arrangement_2d data;
 public:
- //  #ifndef SWIG
-  // typedef EPIC_Kernel::Arrangement_2 cpp_base; // Line check
- //  const cpp_base& get_data() const {return data;}
-//	 cpp_base& get_data()	    {return data;}
-  // Arrangement_2(const cpp_base& base):data(base){}
- //  #endif
+   #ifndef SWIG
+   typedef Arrangement_2d cpp_base; // Line check
+   const cpp_base& get_data() const {return data;}
+	 cpp_base& get_data()	    {return data;}
+   Arrangement_2(const cpp_base& base):data(base){}
+   #endif
 
 //Creation
 //Arrangement_2():data(){}
-inline Arrangement_2 (const Base& base);
+inline Arrangement_2(const Base& base);
 inline Arrangement_2(const Traits_2 *tr);
 //inline Arrangement_2(const Self &other);
 //inline Arrangement_2(const Traits_2 *traits);
@@ -108,9 +138,9 @@ SWIG_CGAL_FORWARD_CALL_3(Face_handle,remove_edge,Halfedge_handle,bool,bool)
 SWIG_CGAL_DECLARE_CALL_AND_REF_0(bool,is_valid)
 
 //Deep copy
- // typedef Arrangement_2 Self;
-  //Self deepcopy() const {return Self(data);}
-  //void deepcopy(const Self& other){data=other.get_data();}
+  typedef Arrangement_2 Self;
+  Self deepcopy() const {return Self(data);}
+  void deepcopy(const Self& other){data=other.get_data();}
 };
 
 #endif
