@@ -20,6 +20,10 @@
 #include <SWIG_CGAL/Common/Iterator.h>
 #include <SWIG_CGAL/Common/Wrapper_iterator_helper.h>
 #include <SWIG_CGAL/Kernel/Arrangement_2_typedefs.h>
+#include <SWIG_CGAL/Common/Input_iterator_wrapper.h>
+#include <SWIG_CGAL/Kernel/Arr_2_face_decl.h>
+#include <SWIG_CGAL/Kernel/Arr_2_halfedge_decl.h>
+#include <SWIG_CGAL/Kernel/Arr_2_vertex_decl.h>
 
 // Direct CGAL includes
 #include <CGAL/Arrangement_2.h>
@@ -34,17 +38,21 @@ typedef CGAL::Arr_linear_traits_2<EPIC_Kernel> Arr_traits;
 typedef CGAL::Arr_extended_dcel<Arr_traits, Cglab_arr_datum, Cglab_arr_datum, Cglab_arr_datum> Arr_dcel;
 typedef CGAL::Arrangement_2<Arr_traits,Arr_dcel> Arrangement_2d;
 
-typedef Arr_traits::Vector_2 Vector_2;
-typedef Arr_traits::Curve_2 Curve_2;
-typedef Arr_traits::Point_2 Point_2;
-typedef Arr_traits::Line_2 Line_2;
-typedef Arr_traits::Ray_2 Ray_2;
-typedef Arr_traits::Segment_2 Segment_2;
-typedef Arr_traits::X_monotone_curve_2 X_monotone_curve_2;
+typedef Arr_dcel::Size Size;
 
-typedef Arrangement_2d::Vertex_handle Vertex_handle;
-typedef Arrangement_2d::Halfedge_handle Halfedge_handle;
-typedef Arrangement_2d::Face_handle Face_handle;
+typedef Arr_traits Traits_2;
+
+//typedef Arr_traits::Vector_2 Vector_2;
+//typedef Arr_traits::Curve_2 Curve_2;
+//typedef Arr_traits::Point_2 Point_2;
+//typedef Arr_traits::Line_2 Line_2;
+//typedef Arr_traits::Ray_2 Ray_2;
+//typedef Arr_traits::Segment_2 Segment_2;
+//typedef Arr_traits::X_monotone_curve_2 X_monotone_curve_2;
+
+//typedef Arrangement_2d::Vertex_handle Vertex_handle;
+//typedef Arrangement_2d::Halfedge_handle Halfedge_handle;
+//typedef Arrangement_2d::Face_handle Face_handle;
 typedef Arrangement_2d::Vertex_const_handle Vertex_const_handle;
 typedef Arrangement_2d::Halfedge_const_handle Halfedge_const_handle;
 typedef Arrangement_2d::Face_const_handle Face_const_handle;
@@ -56,6 +64,7 @@ typedef Arrangement_2d::Halfedge_around_vertex_circulator Halfedge_around_vertex
 typedef Arrangement_2d::Ccb_halfedge_circulator Ccb_halfedge_circulator;
 typedef Arrangement_2d::Unbounded_face_iterator Unbounded_face_iterator;
 
+template <class Arr_traits,class Arr_dcel>
 class SWIG_CGAL_KERNEL_DECL Arrangement_2{
    Arrangement_2d data;
 public:
@@ -68,7 +77,7 @@ public:
 
 //Creation
 //Arrangement_2():data(){}
-inline Arrangement_2(const Base& base);
+inline Arrangement_2(const Self &other);
 inline Arrangement_2(const Traits_2 *tr);
 //inline Arrangement_2(const Self &other);
 //inline Arrangement_2(const Traits_2 *traits);
@@ -138,7 +147,7 @@ SWIG_CGAL_FORWARD_CALL_3(Face_handle,remove_edge,Halfedge_handle,bool,bool)
 SWIG_CGAL_DECLARE_CALL_AND_REF_0(bool,is_valid)
 
 //Deep copy
-  typedef Arrangement_2 Self;
+  typedef Arrangement_2<Arr_traits,Arr_dcel> Self;
   Self deepcopy() const {return Self(data);}
   void deepcopy(const Self& other){data=other.get_data();}
 };

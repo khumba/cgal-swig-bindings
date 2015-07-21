@@ -6,12 +6,15 @@
 #include <SWIG_CGAL/Kernel/include_conflicts_2.h>
 #include <SWIG_CGAL/Kernel/enum.h>
 #include <SWIG_CGAL/Kernel/typedefs.h>
+#include <CGAL/Arr_linear_traits_2.h>
+
+typedef CGAL::Arr_linear_traits_2<EPIC_Kernel>::Curve_2 Curve_2d;
 
 class SWIG_CGAL_KERNEL_DECL Curve_2{
-  EPIC_Kernel::Curve_2 data;
+  Curve_2d data;
 public:
   #ifndef SWIG
-  typedef EPIC_Kernel::Curve_2 cpp_base; // or typedef Arr_traits::Curve_2 Curve_2;
+  typedef Curve_2d cpp_base; // or typedef Arr_traits::Curve_2 Curve_2;
   const cpp_base& get_data() const {return data;}
         cpp_base& get_data()       {return data;}
   Curve_2(const cpp_base& base):data(base){}

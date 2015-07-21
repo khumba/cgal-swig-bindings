@@ -9,12 +9,18 @@
 
 // Direct Cgal includes
 #include <CGAL/Arr_algebraic_segment_traits_2.h>
+#include <CGAL/Arr_linear_traits_2.h>
+
+//typedef ArrangementBasicTraits_2::X_monotone_curve_2 X_monotone_curve_2d;
+typedef CGAL::Arr_linear_traits_2<EPIC_Kernel> Arr_traits_xmc2;
+
+typedef Arr_traits_xmc2::X_monotone_curve_2 X_monotone_curve_2d;
 
 class SWIG_CGAL_KERNEL_DECL X_monotone_curve_2{
-	EPIC_Kernel::X_monotone_curve_2 data;
+	X_monotone_curve_2d data;
 public:
 	#ifndef SWIG
-	typedef EPIC_Kernel::X_monotone_curve_2 cpp_base; //or ArrangementBasicTraits_2
+	typedef typename X_monotone_curve_2d cpp_base; //or ArrangementBasicTraits_2
 	const cpp_base& get_data() const {return data;}
 	      cpp_base& get_data()	 {return data;}
 	X_monotone_curve_2(const cpp_base& base):data(base){}
