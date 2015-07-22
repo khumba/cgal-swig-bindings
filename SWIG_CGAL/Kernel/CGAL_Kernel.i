@@ -88,12 +88,12 @@ SWIG_CGAL_input_iterator_typemap_in_python_extra_function(Polygon_2::Polygon_2)
 %define Point_range_2 Generic_input_iterator<Point_2> %enddef
 
 #ifdef SWIGSCILAB
-%template(Pt2ii) Generic_input_iterator<Point_2>;
-%template(Pt3ii) Generic_input_iterator<Point_3>;
-%template(Wp2ii) Generic_input_iterator<Weighted_point_2>;
-%template(Wp3ii) Generic_input_iterator<Weighted_point_3>;
-%template(T3ii) Generic_input_iterator<Triangle_3>;
-%template(S3ii) Generic_input_iterator<Segment_3>;
+%template(Point_2_input_iter) Generic_input_iterator<Point_2>;
+%template(Point_3_input_iter) Generic_input_iterator<Point_3>;
+%template(WPoint_2_input_iter) Generic_input_iterator<Weighted_point_2>;
+%template(WPoint_3_input_iter) Generic_input_iterator<Weighted_point_3>;
+%template(Triangle_3_input_iter) Generic_input_iterator<Triangle_3>;
+%template(Segment_3_input_iter) Generic_input_iterator<Segment_3>;
 #else
 %template(Point_2_input_iterator) Generic_input_iterator<Point_2>;
 %template(Point_3_input_iterator) Generic_input_iterator<Point_3>;
@@ -173,28 +173,28 @@ Vector_3.__rmul__ = Vector_3.__mul__
 //Iterators
 SWIG_CGAL_set_as_java_iterator(SWIG_CGAL_Iterator,Point_2,)
 #ifdef SWIGSCILAB
-%template(P2vi) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Vertex_iterator,Point_2 >;
+%template(Polygon_2_vert_iter) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Vertex_iterator,Point_2 >;
 #else
 %template(Polygon_2_Vertex_iterator) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Vertex_iterator,Point_2 >;
 #endif
 
 SWIG_CGAL_set_as_java_iterator(SWIG_CGAL_Iterator,Segment_2,)
 #ifdef SWIGSCILAB
-%template(P2eci) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Edge_const_iterator,Segment_2 >;
+%template(Polygon_2_edge_citer) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Edge_const_iterator,Segment_2 >;
 #else
 %template(Polygon_2_Edge_const_iterator) SWIG_CGAL_Iterator< Polygon_2::cpp_base::Edge_const_iterator,Segment_2 >;
 #endif
 
 SWIG_CGAL_set_as_java_iterator(SWIG_CGAL_Circulator,Point_2,)
 #ifdef SWIGSCILAB
-%template(P2vc) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Vertex_circulator,Point_2 >;
+%template(Polygon_2_vert_circ) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Vertex_circulator,Point_2 >;
 #else
 %template(Polygon_2_Vertex_circulator) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Vertex_circulator,Point_2 >;
 #endif
 
 SWIG_CGAL_set_as_java_iterator(SWIG_CGAL_Circulator,Segment_2,)
 #ifdef SWIGSCILAB
-%template(P2ecc) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Edge_const_circulator,Segment_2 >;
+%template(Polygon_2_Edge_ccirc) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Edge_const_circulator,Segment_2 >;
 #else
 %template(Polygon_2_Edge_const_circulator) SWIG_CGAL_Circulator< Polygon_2::cpp_base::Edge_const_circulator,Segment_2 >;
 #endif
