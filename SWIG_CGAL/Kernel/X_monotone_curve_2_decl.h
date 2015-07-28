@@ -10,11 +10,15 @@
 // Direct Cgal includes
 #include <CGAL/Arr_algebraic_segment_traits_2.h>
 #include <CGAL/Arr_linear_traits_2.h>
+#include <CGAL/Arr_enums.h> 
+#include <CGAL/Algebraic_kernel_d_1.h>
 
 //typedef ArrangementBasicTraits_2::X_monotone_curve_2 X_monotone_curve_2d;
 typedef CGAL::Arr_linear_traits_2<EPIC_Kernel> Arr_traits_xmc2;
 
+typedef CGAL::Arr_curve_end Arr_curve_end;
 typedef Arr_traits_xmc2::X_monotone_curve_2 X_monotone_curve_2d;
+typedef CGAL::Algebraickernel_d_1::Algebraic_real_1 Algebraic_real_1;
 
 class SWIG_CGAL_KERNEL_DECL X_monotone_curve_2{
 	X_monotone_curve_2d data;
@@ -27,12 +31,12 @@ public:
 	#endif
 
 //Modifiers
-SWIG_CGAL_FORWARD_CALL_AND_REF_SCOPE_0(Curve_2,curve)
-SWIG_CGAL_FORWARD_CALL_0(bool,is_vertical)
-SWIG_CGAL_DECLARE_CALL_1(bool,is_finite,CGAL::Arr_curve_end)
-SWIG_CGAL_FORWARD_CALL_AND_REF_SCOPE_1(Point_2,curve_end,CGAL::Arr_curve_end)
-SWIG_CGAL_FORWARD_CALL_AND_REF_SCOPE_0(int,arcno)
-SWIG_CGAL_FORWARD_CALL_AND_REF_SCOPE_0(Algebraic_real_1,x)
+SWIG_CGAL_DECLARE_CALL_AND_REF_0(Curve_2,curve)
+SWIG_CGAL_DECLARE_CALL_AND_REF_0(bool,is_vertical)
+SWIG_CGAL_DECLARE_CALL_1(bool,is_finite,Arr_curve_end)
+SWIG_CGAL_DECLARE_CALL_AND_REF_1(Point_2,curve_end,Arr_curve_end)
+SWIG_CGAL_DECLARE_CALL_AND_REF_0(int,arcno)
+SWIG_CGAL_DECLARE_CALL_AND_REF_0(Algebraic_real_1,x)
 
 //Deep Copy
 typedef X_monotone_curve_2 Self;

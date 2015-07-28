@@ -23,9 +23,9 @@ typedef Arrangement_2d::Ccb_halfedge_circulator Ccb_halfedge_circulator;
 typedef Arrangement_2d::Hole_iterator Hole_iterator;
 typedef Arrangement_2d::Isolated_vertex_iterator Isolated_vertex_iterator; 
 
-template <class Arr_traits,class Arr_dcel>
+//template <class Arr_traits,class Arr_dcel>
 class SWIG_CGAL_KERNEL_DECL CGAL_Face_handle{
-	typename Face_handle_2d data;
+	Face_handle_2d data;
 public:
 	#ifndef SWIG
 	typedef Face_handle_2d cpp_base;
@@ -51,7 +51,7 @@ SWIG_CGAL_DECLARE_CALL_AND_REF_0(Isolated_vertex_iterator,isolated_vertices_begi
 SWIG_CGAL_DECLARE_CALL_AND_REF_0(Isolated_vertex_iterator,isolated_vertices_end)
 
 //Deep Copy
-typedef CGAL_Face_handle<Arr_traits,Arr_dcel> Self;
+typedef CGAL_Face_handle Self;
 	Self deepcopy() const {return Self(data);}
 	void deepcopy(const Self& other){data=other.get_data();}	
 };

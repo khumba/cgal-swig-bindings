@@ -2,7 +2,7 @@
 // for Arrangement_2 Package
 
 #ifndef SWIG_CGAL_KERNEL_CGAL_VERTEX_DEF_H
-#define SWIg_CGAL_KERNEL_CGAL_VERTEX_DEF_H
+#define SWIG_CGAL_KERNEL_CGAL_VERTEX_DEF_H
 
 #include <CGAL/Arr_enums.h>
 #include <CGAL/Arrangement_2.h>
@@ -18,7 +18,7 @@ typedef CGAL::Arrangement_2<Arr_traits,Arr_dcel> Arrangement_2d;
 
 typedef Arr_dcel::Size Size;
 //typedef Arrangement_2::Face_handle Face_handle;
-typedef CGAL_Face_handle<Arr_traits,Arr_dcel> Face_handle;
+typedef CGAL_Face_handle Face_handle;
 typedef Arrangement_2d::Halfedge_around_vertex_circulator Halfedge_around_vertex_circulator;
 typedef Arrangement_2d::Vertex_handle Vertex_handle_2d;
 
@@ -31,15 +31,15 @@ typedef Arrangement_2d::Vertex_handle Vertex_handle_2d;
 //} Arr_parameter_space;
 typedef CGAL::Arr_parameter_space Arr_parameter_space;
 
-template <class Arr_traits,class Arr_dcel>
+//template <class Arr_traits,class Arr_dcel>
 class SWIG_CGAL_KERNEL_DECL CGAL_Vertex_handle{
 	Vertex_handle_2d data;
 public:
 	#ifndef SWIG
 	typedef Vertex_handle_2d cpp_base;
 	const cpp_base& get_data() const {return data;}
-	      cpp_base& get_data() const {return data;}
-	CGAL_Vertex_handle(const cpp_base):data(base){}
+	      cpp_base& get_data() {return data;}
+	CGAL_Vertex_handle(const cpp_base& base):data(base){}
 	#endif
 
 //Creation
@@ -56,7 +56,7 @@ SWIG_CGAL_DECLARE_CALL_AND_REF_0(Arr_parameter_space,parameter_space_in_x)
 SWIG_CGAL_DECLARE_CALL_AND_REF_0(Arr_parameter_space,parameter_space_in_y)
 
 //Deep copy
-	typedef CGAL_Vertex_handle<Arr_traits,Arr_dcel> Self;
+	typedef CGAL_Vertex_handle Self;
 	Self deepcopy() const {return Self(data);}
 	void deepcopy(const Self& other){data=other.get_data();}
 
