@@ -53,20 +53,20 @@ typedef std::pair<Input_iterator_wrapper<Face_handle,Face_handle::cpp_base>,Inpu
 //typedef Arr_traits::Segment_2 Segment_2;
 //typedef Arr_traits::X_monotone_curve_2 X_monotone_curve_2;
 
-typedef CGAL_Vertex_handle Vertex_handle;
-typedef CGAL_Halfedge_handle Halfedge_handle;
-typedef CGAL_Face_handle Face_handle;
+//typedef CGAL_Vertex_handle Vertex_handle;	// Not required
+//typedef CGAL_Halfedge_handle Halfedge_handle;	// Not Required
+//typedef CGAL_Face_handle Face_handle;		// Not Required
 typedef Curve_2 X_monotone_curve_2;
 //typedef Arrangement_2d::Vertex_const_handle Vertex_const_handle;
 //typedef Arrangement_2d::Halfedge_const_handle Halfedge_const_handle;
 //typedef Arrangement_2d::Face_const_handle Face_const_handle;
-//typedef Arrangement_2d::Vertex_iterator Vertex_iterator;
-//typedef Arrangement_2d::Halfedge_iterator Halfedge_iterator;
-//typedef Arrangement_2d::Edge_iterator Edge_iterator;
-//typedef Arrangement_2d::Face_iterator Face_iterator;
+typedef Arrangement_2d::Vertex_iterator CGAL_Vertex_iterator;
+typedef Arrangement_2d::Halfedge_iterator CGAL_Halfedge_iterator;
+typedef Arrangement_2d::Edge_iterator CGAL_Edge_iterator;
+typedef Arrangement_2d::Face_iterator CGAL_Face_iterator;
 //typedef Arrangement_2d::Halfedge_around_vertex_circulator Halfedge_around_vertex_circulator;
 //typedef Arrangement_2d::Ccb_halfedge_circulator Ccb_halfedge_circulator;
-//typedef Arrangement_2d::Unbounded_face_iterator Unbounded_face_iterator;
+typedef Arrangement_2d::Unbounded_face_iterator CGAL_Unbounded_face_iterator;
 
 //template <class Arr_traits,class Arr_dcel>
 class SWIG_CGAL_KERNEL_DECL Arrangement_2{
@@ -78,44 +78,49 @@ public:
 	 cpp_base& get_data()	    {return data;}
    Arrangement_2(const cpp_base& base):data(base){}
    #endif
+	
 	typedef Arrangement_2 Self;
+
 //Creation
-//Arrangement_2():data(){}
-inline Arrangement_2(const Traits_2 *tr);
+Arrangement_2():data(){}
+//inline Arrangement_2(const Traits_2& tr); //Some Scary things
+//SWIG_CGAL_FORWARD_CALL_1()
 
 //Assignment Methods
 //inline Self& operator= (const Base& base);
-inline void assign (const Self& other);
-inline void clear();
+//inline void assign (const Self& other);
+//inline void clear();
+//SWIG_CGAL_FORWARD_CALL_1(void,assign,Arrangement_2d)
+SWIG_CGAL_FORWARD_CALL_0(void,clear)
 
 //Access Functions
 //SWIG_CGAL_FORWARD_CALL_0(Traits_2,get_traits) - Check get_traits
 SWIG_CGAL_FORWARD_CALL_0(bool,is_empty)
 
 //Accessing the Arrangement Vertices
-/*SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_vertices)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_isolated_vertices)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Vertex_iterator,vertices_begin)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Vertex_iterator,vertices_end)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_vertices_at_infinity)
-*/
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_vertices)
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_isolated_vertices)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Vertex_iterator,vertices_begin)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Vertex_iterator,vertices_end)
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_vertices_at_infinity)
+
 //Accessing the Arrangement Halfedges
-/*SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_halfedges)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Halfedge_iterator,halfedges_begin)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Halfedge_iterator,halfedges_end)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_edges)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Edge_iterator,edges_end)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Edge_iterator,edges_begin)
-*/
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_halfedges)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Halfedge_iterator,halfedges_begin)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Halfedge_iterator,halfedges_end)
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_edges)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Edge_iterator,edges_end)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Edge_iterator,edges_begin)
+
 //Accessing the Arrangement Faces
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_handle,unbounded_face)
-/*SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_faces)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Face_iterator,faces_end)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Face_iterator,faces_begin)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Size,number_of_unbounded_faces)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Unbounded_face_iterator,unbounded_faces_end)
-SWIG_CGAL_DECLARE_CALL_AND_REF_0(Unbounded_face_iterator,unbounded_faces_begin)
-*/SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_handle,fictitious_face)
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_faces)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_iterator,faces_end)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_iterator,faces_begin)
+SWIG_CGAL_FORWARD_CALL_0(Size,number_of_unbounded_faces)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Unbounded_face_iterator,unbounded_faces_end)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Unbounded_face_iterator,unbounded_faces_begin)
+SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_handle,fictitious_face)
 
 //Casting Away Costness
 /*SWIG_CGAL_DECLARE_CALL_AND_REF_1(CGAL_Vertex_handle,non_const_handle,Vertex_const_handle)
@@ -147,8 +152,7 @@ SWIG_CGAL_FORWARD_CALL_3(CGAL_Face_handle,remove_edge,CGAL_Halfedge_handle,bool,
 // Miscellaneous
 SWIG_CGAL_FORWARD_CALL_0(bool,is_valid)
 
-//Deep copy
-  
+//Deep Copy
   Self deepcopy() const {return Self(data);}
   void deepcopy(const Self& other){data=other.get_data();}
 };
