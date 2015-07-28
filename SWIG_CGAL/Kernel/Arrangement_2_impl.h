@@ -1,14 +1,14 @@
 
 
 
-#ifndef SWIG_CGAL_KERNEL_ARRANGEMENT_2D_IMPH_H
-#define SWIG_CGAL_KERNEL_ARRANGEMENT_2D_IMPH_H
+#ifndef SWIG_CGAL_KERNEL_ARRANGEMENT_2_IMPH_H
+#define SWIG_CGAL_KERNEL_ARRANGEMENT_2_IMPH_H
 
 #include <SWIG_CGAL/Kernel/Direction_2_decl.h>
 #include <SWIG_CGAL/Kernel/Line_2_decl.h>
 #include <SWIG_CGAL/Kernel/Point_2_decl.h>
 #include <SWIG_CGAL/Kernel/Ray_2_decl.h>
-#include <SWIG_CGAL/Kernel/Segement_2_decl.h>
+#include <SWIG_CGAL/Kernel/Segment_2_decl.h>
 #include <SWIG_CGAL/Kernel/Vector_2.h>
 #include <SWIG_CGAL/Kernel/Origin.h>
 #include <CGAL/Origin.h>
