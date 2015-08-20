@@ -1,0 +1,14 @@
+[1]Files to be coded:-
+	[a]CGAL::insert()
+	[b]Point-location functions
+
+
+[2]Test Files issues:-
+	[c]cgal.Point_2.equals(p1,p2)	(compares p1 with origin,outputs bool on basis of that only)
+	[d]cgal.Vector_2.equals(v1)	(crashes if v1 is NULL Vector)
+	[e]cgal.Curve_2.new()           (return Segements only whatever type the function is overloaded for)
+   	   [e.1]cgal.Curve_2.line(c1)	(not working because c1 is segment)
+   	   [e.2]cgal.Curve_2.ray(c1)    (not working because c1 is segment)  	
+	[f] cgal.Line_2.new		(Overloading Issues)
+
+[3]API Update

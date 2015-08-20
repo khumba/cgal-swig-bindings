@@ -1,0 +1,547 @@
+
+//  Point_2 test
+p1 = new_Point_2(1,1);
+p2 = new_Point_2(2,7);
+p3 = cgal.Point_2.deepcopy(p2);
+
+p4 = cgal.Point_2.equals(p1,p2)
+p4  =
+ 
+  F
+
+p4 = cgal.Point_2.not_equals(p1,p2)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Point_2.plus(p1,p2);
+p4 = cgal.Point_2.toString(p4)
+ p4  =
+ 
+ 3 8 
+
+p4 = cgal.Point_2.minus(p1,p2);
+p4 = cgal.Point_2.toString(p4)
+ p4  =
+ 
+ -1 -6 
+
+p4 = cgal.Point_2.x(p1)
+ p4  =
+ 
+    1.  
+ 
+p4 = cgal.Point_2.x(p2)
+ p4  =
+ 
+    2.
+
+
+p4 = cgal.Point_2.y(p2)
+ p4  =
+ 
+    7.  
+ 
+p4 = cgal.Point_2.y(p1)
+ p4  =
+ 
+    1.  
+
+box = new_Bbox_2()
+ box  =
+ 
+ 
+p4 = cgal.Point_2.bbox(box)
+ p4  =
+ 
+ 
+p4 = cgal.Point_2.set_coordinates(p3,2,3)
+ 
+p4 = cgal.Point_2.x(p3)
+ p4  =
+ 
+    2.  
+ 
+p4 = cgal.Point_2.y(p3)
+ p4  =
+ 
+    3.  
+ 
+ 
+// Curve_2 Tests
+
+crv = new_Curve_2()
+ crv  =
+ 
+ 
+p5 = cgal.Curve_2.source(crv);
+ 
+p4 = cgal.Point_2.toString(p5)
+ p4  =
+ 
+ 6.12606e+223 1.37022e-90   
+ 
+p5 = cgal.Curve_2.target(crv);
+ 
+p4 = cgal.Point_2.toString(p5)
+ p4  =
+ 
+ 1.38859e+93 1.15845e+171   
+ 
+ln = new_Line_2(p1,p2)
+ ln  =
+ 
+ 
+p4 = cgal.Curve_2.line(ln);
+
+p4 = cgal.Curve_2.is_line(ln)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Curve_2.supporting_line(ln);
+
+ray = new_Ray_2(p1,p2)
+ ray  =
+ 
+ 
+p4 = cgal.Curve_2.ray(ray)
+ p4  =
+ 
+ 
+cgal.Curve_2.is_ray(p4)
+ ans  =
+ 
+  T  
+ 
+segmnt = new_Segment_2(p1,p2)
+ segmnt  =
+ 
+ 
+p4 = cgal.Curve_2.segment(segmnt)
+ p4  =
+ 
+ 
+cgal.Curve_2.is_segment(p4)
+ ans  =
+ 
+  T  
+ 
+crvdc = cgal.Curve_2.deepcopy(crv)
+ crvdc  =
+ 
+ 
+
+// Ray_2 Tests
+
+ray = new_Ray_2(p1,p2)
+ ray  =
+ 
+ 
+p7 = new_Point_2(2,3);
+ 
+p8 = new_Point_2(3,4);
+
+ray1 = new_Ray_2(p7,p8)
+ ray1  =
+ 
+ 
+p4 = cgal.Ray_2.equals(ray1,ray)
+ p4  =
+ 
+  F  
+ 
+p4 = cgal.Ray_2.not_equals(ray1,ray)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Ray_2.collinear_has_on(p7,ray1)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Ray_2.collinear_has_on(p1,ray1)
+ p4  =
+ 
+  F  
+ 
+ray2 = cgal.Ray_2.deepcopy(ray1)
+ ray2  =
+ 
+ 
+p4 = cgal.Ray_2.equals(ray1,ray2)
+ p4  =
+ 
+  T  
+ 
+dir = new_Direction_2(ray2)
+ dir  =
+ 
+ 
+p4 = cgal.Ray_2.direction(dir);
+
+p4 = cgal.Ray_2.has_on(p1,ray1)
+ p4  =
+ 
+  F  
+ 
+p4 = cgal.Ray_2.is_degenerate(ray)
+ p4  =
+ 
+  F  
+ 
+p4 = cgal.Ray_2.is_horizontal(ray2)
+ p4  =
+ 
+  F  
+ 
+p3 = new_Point_2(2,1)
+ p3  =
+ 
+ 
+ray3 = new_Ray_2(p1,p3)
+ ray3  =
+ 
+ 
+p4 = cgal.Ray_2.is_horizontal(ray3)
+ p4  =
+ 
+  T  
+ 
+p6 = new_Point_2(1,2)
+ p6  =
+ 
+ 
+ray4 = new_Ray_2(p1,p6)
+ ray4  =
+ 
+ 
+p4 = cgal.Ray_2.is_vertical(ray4)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Ray_2.is_vertical(ray3)
+ p4  =
+ 
+  F  
+ 
+p4 = cgal.Ray_2.opposite(ray3);
+
+p4 = cgal.Ray_2.point(ray3,31)
+ p4  =
+ 
+ 
+cgal.Point_2.toString(p4)
+ ans  =
+ 
+ 32 1   
+ 
+p4 = cgal.Ray_2.source(ray3)
+ p4  =
+ 
+ 
+cgal.Point_2.toString(p4)
+ ans  =
+ 
+ 1 1   
+ 
+p4 = cgal.Ray_2.supporting_line(ray3)
+ p4  =
+ 
+ 
+cgal.Curve_2.is_line(p4)
+ ans  =
+ 
+  T  
+  
+p4 = cgal.Ray_2.toString(ray3)
+ p4  =
+ 
+ 1 1 2 1   
+ 
+p4 = cgal.Ray_2.to_vector(ray3);
+
+
+// Vector_2 Tests
+
+vec = new_Vector_2(p1,p2)
+ vec  =
+ 
+ 
+vec1 = new_Vector_2(p3,p4)
+ vec1  =
+ 
+ 
+p4 = cgal.Vector_2.equals(vec1,vec)
+ p4  =
+ 
+  F  
+ 
+p4 = cgal.Vector_2.not_equals(vec1,vec)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Vector_2.cartesian(vec,1)
+ p4  =
+ 
+    6.  
+ 
+vec3 = cgal.Vector_2.deepcopy(vec)
+ vec3  =
+ 
+ 
+p4 = cgal.Vector_2.dimension(vec)
+ p4  =
+ 
+    2.  
+ 
+p4 = cgal.Vector_2.direction(vec);
+
+p4 = cgal.Vector_2.toString(vec)
+ p4  =
+ 
+ 1 6   
+ 
+p4 = cgal.Vector_2.normalize(vec)
+ 
+p4 = cgal.Vector_2.toString(vec)
+ p4  =
+ 
+ 0.164399 0.986394   
+ 
+vec4 = cgal.Vector_2.times(vec,2)
+ vec4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(vec4)
+ p4  =
+ 
+ 2 12   
+ 
+vec5 = cgal.Vector_2.itimes(vec,2)
+ vec5  =
+ 
+ 
+p4 = cgal.Vector_2.toString(vec5)
+ p4  =
+ 
+ 2 12   
+ 
+vec5 = cgal.Vector_2.itimes(vec,1.5)
+ vec5  =
+ 
+ 
+vec5 = cgal.Vector_2.itimes(vec,2)
+ vec5  =
+ 
+ 
+vec5 = cgal.Vector_2.itimes(vec,1.5)
+ vec5  =
+ 
+ 
+p4 = cgal.Vector_2.toString(vec5)
+ p4  =
+ 
+ 9 54   
+ 
+p4 = cgal.Vector_2.toString(vec)
+ p4  =
+ 
+ 9 54   
+ 
+p4 = cgal.Vector_2.toString(vec4)
+ p4  =
+ 
+ 2 12   
+ 
+
+p4 = cgal.Vector_2.plus(vec,vec1)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 8 53   
+ 
+p4 = cgal.Vector_2.minus(vec,vec1)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 10 55   
+ 
+p4 = cgal.Vector_2.iminus(vec,vec1)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 10 55   
+ 
+p4 = cgal.Vector_2.iplus(vec,vec1)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 9 54   
+ 
+p4 = cgal.Vector_2.div(vec,2.0)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 4.5 27   
+ 
+p4 = cgal.Vector_2.idiv(vec,2.0)
+ p4  =
+ 
+ 
+p4 = cgal.Vector_2.toString(p4)
+ p4  =
+ 
+ 4.5 27   
+ 
+p4 = cgal.Vector_2.squared_length(vec)
+ p4  =
+ 
+    749.25  
+ 
+p4 = cgal.Vector_2.x(vec)
+ p4  =
+ 
+    4.5  
+ 
+p4 = cgal.Vector_2.y(vec)
+ p4  =
+ 
+    27.  
+ 
+
+// Arrangement_2 Tests
+
+Arr = new_Arrangement_2()
+ Arr  =
+ 
+ 
+Arr1 = cgal.Arrangement_2.deepcopy(Arr)
+ Arr1  =
+ 
+ 
+p4 = cgal.Arrangement_2.clear(Arr1)
+
+p4 = cgal.Arrangement_2.is_empty(Arr)
+ p4  =
+ 
+  T  
+ 
+p4 = cgal.Arrangement_2.number_of_vertices(Arr)
+ p4  =
+ 
+    0.  
+ 
+p4 = cgal.Arrangement_2.number_of_isolated_verti(Arr)
+ p4  =
+ 
+    0.  
+ 
+p4 = cgal.Arrangement_2.vertices_begin(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.vertices_end(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.number_of_vertices_infi(Arr)
+ p4  =
+ 
+    0.  
+ 
+p4 = cgal.Arrangement_2.number_of_halfedges(Arr)
+ p4  =
+ 
+    0.  
+ 
+p4 = cgal.Arrangement_2.halfedges_begin(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.halfedges_end(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.number_of_edges(Arr)
+ p4  =
+ 
+    0.  
+ 
+p4 = cgal.Arrangement_2.edges_end(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.edges_begin(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.unbounded_face(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.number_of_faces(Arr)
+ p4  =
+ 
+    1.  
+ 
+p4 = cgal.Arrangement_2.faces_end(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.faces_begin(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.number_of_unbounded_face(Arr)
+ p4  =
+ 
+    1.  
+ 
+p4 = cgal.Arrangement_2.unbounded_faces_end(Arr)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.unbounded_faces_begin(Arr)
+ p4  =
+ 
+
+facehndl = cgal.Arrangement_2.fictitious_face(Arr)
+ facehndl  =
+ 
+ 
+vertexhndl = cgal.Arrangement_2.insert_in_face_interior(Arr,p1,facehndl)
+ vertexhndl  =
+ 
+ 
+halfedgehndl = cgal.Arrangement_2.insert_in_face_interior(Arr,crv,facehndl)
+ halfedgehndl  =
+ 
+ 
+p4 = cgal.Arrangement_2.modify_vertex(Arr,vertexhndl,p1)
+ p4  =
+ 
+ 
+p4 = cgal.Arrangement_2.remove_isolated_vertex(Arr,vertexhndl)
+ p4  =
+ 
+ 
+

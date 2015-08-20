@@ -1,0 +1,32 @@
+p1 = new_Point_2(1,2);
+ 
+p2 = new_Point_2(0,0);
+ 
+p3 = new_Point_2(2,3);
+ 
+
+ 
+s1 = new_Segment_2(p1,p2);
+ 
+s2 = new_Segment_2(p1,p3);
+ 
+
+ 
+p4 = cgal.Segment_2.max(s1)
+ p4  =
+ 
+ 
+cgal.Point_2.toString(p4)
+ ans  =
+ 
+ 1 2   
+ 
+p4 = cgal.Segment_2.max(s2)
+ p4  =
+ 
+ 
+cgal.Point_2.toString(p4)
+ ans  =
+ 
+ 2 3   
+ 
