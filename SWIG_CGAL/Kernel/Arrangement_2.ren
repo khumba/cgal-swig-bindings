@@ -3,10 +3,10 @@ member deepcopy
 member clear
 member is_empty
 member number_of_vertices
-member number_of_isolated_vertices
+member number_of_isolated_vertices number_of_isolated_verts
 member vertices_begin
 member vertices_end
-member number_of_vertices_at_infinity
+member number_of_vertices_at_infinity number_of_verts_at_infty
 member number_of_halfedges
 member halfedges_begin
 member halfedges_end
@@ -17,7 +17,7 @@ member unbounded_face
 member number_of_faces
 member faces_end
 member faces_begin
-member number_of_unbounded_faces
+member number_of_unbounded_faces number_of_unb_faces
 member unbounded_faces_end
 member unbounded_faces_begin
 member fictitious_face
