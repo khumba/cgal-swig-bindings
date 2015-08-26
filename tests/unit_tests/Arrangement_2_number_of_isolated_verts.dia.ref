@@ -23,22 +23,22 @@ c1 = new_Curve_2(s1);
  
 
  
-cgal.Arrangement_2.number_of_vertices_infi(a1)
+cgal.Arrangement_2.number_of_isolated_verts(a1)
  ans  =
  
     0.  
  
 vertex_hndl = cgal.Arrangement_2.insert_in_face_interior(a1,p1,face_hndl);
  
-cgal.Arrangement_2.number_of_vertices_infi(a1)
+cgal.Arrangement_2.number_of_isolated_verts(a1)
  ans  =
  
-    0.  
+    1.  
  
 vertex_hndl = cgal.Arrangement_2.insert_in_face_interior(a1,p2,face_hndl);
  
-cgal.Arrangement_2.number_of_vertices_infi(a1)
+cgal.Arrangement_2.number_of_isolated_verts(a1)
  ans  =
  
-    0.  
+    2.  
  
