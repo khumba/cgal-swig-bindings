@@ -136,13 +136,78 @@ sayScilab
 sayScilab "${sciCgalRoot} = struct();"
 
 # Go through the input file line by line.
+functionIdx=0
 class=  # The current class name (empty until a class is declared).
 classIdx=0
 classLabel=  # An intermediate name for the class.
 classSciPath=  # The path under the 'cgal' namespace to the class in Scilab.
 memberIdx=0
+hasFunctionsWithoutNamespaces=
 hasLongSciNames=
 hasLongWrapperNames=
+
+# Usage: defFunction cppFunctionPath [sciFunctionName | -]
+defFunction() {
+    # The C++ path to the function, including namespaces.
+    local -r functionPath="${1:?}"
+    # The C++ function name, without namespaces.
+    local -r functionName="${functionPath##*::}"
+    # The Scilab name of the function.
+    local functionSci="${2:-}"
+
+    if ! [[ $functionPath = *::* ]]; then
+        fail "The function specification \"${functionPath}\" should include" \
+             "namespaces."
+        if [[ -z $hasFunctionsWithoutNamespaces ]]; then
+            hasFunctionsWithoutNamespaces=1
+            fail "...See the documentation for 'function' in doc/scilab.md."
+        fi
+        return 1
+    fi
+
+    # Is the function an operator function?
+    local isOperator=
+    if [[ $functionName = operator* ]] && ! [[ $functionName = operator[a-zA-Z0-9_]* ]]; then
+       isOperator=1
+    fi
+    local -r isOperator
+
+    # Defaulting for the Scilab name.  If it's absent, empty, or "-", then
+    # Scilab will use the C++ name.
+    if [[ -z $functionSci ]] || [[ $functionSci = - ]]; then
+        if [[ -n $isOperator ]]; then
+            functionSci="$(operatorSciName "${functionName#operator}")"
+        else
+            functionSci="$functionName"
+        fi
+    fi
+    local -r functionSci
+
+    if [[ ${#functionSci} -gt 24 ]]; then
+        fail \
+            "The Scilab name \"${functionSci}\" for \"${functionPath}\"" \
+            "mustn't be longer than 24 characters, is ${#functionSci}" \
+            "characters.  Please provide a second argument to the 'function'" \
+            "command to change the Scilab name."
+        return 1
+    fi
+
+    # Determine the name of the SWIG wrapper function.
+    local functionRename
+    if [[ -n $isOperator ]]; then
+        functionRename="swigCgalF$(operatorWrapperName "${functionName#operator}")"
+    else
+        : $((functionIdx++))
+        functionRename="swigCgalF${functionIdx}"
+    fi
+    local -r functionRename
+
+    # Emit a %rename directive and bind a nested Scilab name to the intermediate
+    # wrapper name.
+    saySwig "%rename (\"${functionRename}\") ${functionPath};"
+    sayScilab "${sciCgalRoot}.${functionSci} = ${functionRename};"
+    return 0
+}
 
 # Usage: defClass CppClassName [SciClassName]
 defClass() {
@@ -283,6 +348,13 @@ while read -r line <&$inputFd; do
     read -ra words <<<"$line"  # Split the line into words.
     if [[ ${#words[@]} -eq 0 ]]; then continue; fi
     case "${words[0]}" in
+        function)
+            if ! defFunction \
+                "${words[1]:?'function' requires a C++ function to bind to.}" \
+                "${words[2]:-}"; then
+                fail "...processing line: \"${words[@]}\""
+            fi
+            ;;
         bind-member)
             # TODO Switch to (argc >= x && argc <= y), to check for extra arguments.
             if ! bindMember \

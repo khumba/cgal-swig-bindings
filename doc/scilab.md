@@ -52,6 +52,16 @@ this file, so it may be split into multiple `#include`d files.
 
 The valid commands are as follows:
 
+- **function** _functionPath [ scilabName ]_
+
+  Declares the C++ non-member function _functionPath_ to have renames generated
+  for it.  _functionPath_ should specify the namespace (at least one `::`),
+  otherwise the renamer would rename _all_ functions named _functionPath_ (this
+  is disallowed for now, since it is not required).  The Scilab name for the
+  function will be _scilabName_, or the final component of _functionPath_
+  (namespaces removed) if no second argument is given.  Member functions must
+  use **method** instead.
+
 - **class** _className [ scilabName ]_
 
   Declares the C++ class _className_ to have renames generated for it.  The
