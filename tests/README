@@ -1,0 +1,10 @@
+Scilab unit tests are contained in the unit_tests/ subdirectory.  To run them,
+the bindings must be built within a build/ subdirectory of the project root
+directory.  Then, in Scilab, switch to the project root directory and run:
+
+    test_run(pwd())
+
+A specific test name or matrix of test names can be given as the second
+argument:
+
+    test_run(pwd(), 'load')
