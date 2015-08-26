@@ -143,7 +143,8 @@ classLabel=  # An intermediate name for the class.
 classSciPath=  # The path under the 'cgal' namespace to the class in Scilab.
 memberIdx=0
 hasFunctionsWithoutNamespaces=
-hasLongSciNames=
+hasLongSciClassNames=
+hasLongSciMethodNames=
 hasLongWrapperNames=
 
 # Usage: defFunction cppFunctionPath [sciFunctionName | -]
@@ -222,13 +223,13 @@ defClass() {
         fail \
             "The Scilab name \"${classSci}\" for class \"${class}\"" \
             "mustn't be longer than 24 characters, is ${#classSci} characters."
-        if [[ -z $hasLongSciNames ]]; then
-            hasLongSciNames=1
+        if [[ -z $hasLongSciClassNames ]]; then
+            hasLongSciClassNames=1
             fail \
-                "...Please provide a second argument to the 'method'" \
-                "interface command to change the Scilab name."
-            return 1
+                "...Please provide a second argument to the 'class' command" \
+                "to change the Scilab name."
         fi
+        return 1
     fi
 
     saySwig "%rename (\"${classSci}\", %\$isclass) ${class};"
@@ -305,8 +306,8 @@ defMember() {
     # wrapper name.
     saySwig "%rename (\"${memberRename}\") ${class}::${member};"
     if ! bindMember "$memberSci" "$memberWrapper"; then
-        if [[ -z $hasLongSciNames ]]; then
-            hasLongSciNames=1
+        if [[ -z $hasLongSciMethodNames ]]; then
+            hasLongSciMethodNames=1
             fail \
                 "...Please provide a second argument to the 'member' command" \
                 "to change the Scilab name."
