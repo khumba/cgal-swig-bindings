@@ -1,3 +1,4 @@
+exec('build/SWIG_CGAL/Kernel/sciloader.sce', -1);
 a1 = new_Arrangement_2();
 a2 = cgal.Arrangement_2.deepcopy(a1);
 p1 = new_Point_2(1,2);

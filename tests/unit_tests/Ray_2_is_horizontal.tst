@@ -1,3 +1,4 @@
+exec('build/SWIG_CGAL/Kernel/sciloader.sce', -1);
 p1 = new_Point_2(1,2);
 p2 = new_Point_2(0,2);
 p3 = new_Point_2(2,3);

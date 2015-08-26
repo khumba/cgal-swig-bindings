@@ -1,3 +1,14 @@
+exec('build/SWIG_CGAL/Kernel/sciloader.sce', -1);
+Warning :
+The identifier : libCGAL_Kernel_Scilab_path
+ has been truncated to: libCGAL_Kernel_Scilab_pa.
+
+Warning :
+The identifier : libCGAL_Kernel_Scilab_path
+ has been truncated to: libCGAL_Kernel_Scilab_pa.
+
+Shared archive loaded.
+Link done.
 a1 = new_Arrangement_2();
  
 a2 = cgal.Arrangement_2.deepcopy(a1);
