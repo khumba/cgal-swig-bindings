@@ -8,5 +8,5 @@ v3 = cgal.Vector_2.deepcopy(v1);
 
 cgal.Vector_2.not_equals(v1,v3)
 cgal.Vector_2.not_equals(v1,v2)
-cgal.Vector_2.not_equals(p5,v3)
+cgal.Vector_2.not_equals(v2,v3)
 

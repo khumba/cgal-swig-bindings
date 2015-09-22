@@ -7,6 +7,6 @@ v2 = new_Vector_2(p2,p3);
 
 p4 = cgal.Vector_2.times(v1,1.5)
 cgal.Vector_2.toString(p4)
-p4 = cgal.Vector_2.times(v2,1.99)
+p4 = cgal.Vector_2.times(v2,5)
 cgal.Vector_2.toString(p4)
 
