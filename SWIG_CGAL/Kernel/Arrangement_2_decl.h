@@ -37,8 +37,6 @@ typedef CGAL::Arr_linear_traits_2<EPIC_Kernel> Arr_traits;
 typedef CGAL::Arr_extended_dcel<Arr_traits, Cglab_arr_datum, Cglab_arr_datum, Cglab_arr_datum> Arr_dcel;
 typedef CGAL::Arrangement_2<Arr_traits,Arr_dcel> Arrangement_2d;
 
-typedef Arr_dcel::Size Size;
-
 typedef Arr_traits Traits_2;
 
 /*#if !SWIG_CGAL_NON_SUPPORTED_TARGET_LANGUAGE
@@ -98,26 +96,26 @@ SWIG_CGAL_FORWARD_CALL_0(void,clear)
 SWIG_CGAL_FORWARD_CALL_0(bool,is_empty)
 
 //Accessing the Arrangement Vertices
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_vertices)
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_isolated_vertices)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_vertices)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_isolated_vertices)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Vertex_iterator,vertices_begin)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Vertex_iterator,vertices_end)
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_vertices_at_infinity)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_vertices_at_infinity)
 
 //Accessing the Arrangement Halfedges
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_halfedges)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_halfedges)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Halfedge_iterator,halfedges_begin)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Halfedge_iterator,halfedges_end)
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_edges)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_edges)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Edge_iterator,edges_end)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Edge_iterator,edges_begin)
 
 //Accessing the Arrangement Faces
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_handle,unbounded_face)
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_faces)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_faces)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_iterator,faces_end)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_iterator,faces_begin)
-SWIG_CGAL_FORWARD_CALL_0(Size,number_of_unbounded_faces)
+SWIG_CGAL_FORWARD_CALL_0(size_t,number_of_unbounded_faces)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Unbounded_face_iterator,unbounded_faces_end)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Unbounded_face_iterator,unbounded_faces_begin)
 SWIG_CGAL_FORWARD_CALL_0(CGAL_Face_handle,fictitious_face)
