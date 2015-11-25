@@ -138,6 +138,7 @@ MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
       OUTPUT scilab-renames.i sciloader.sce
       MAIN_DEPENDENCY "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
       COMMAND "${CMAKE_SOURCE_DIR}/tools/scilab-rename-gen.bash"
+      --module-name ${packagename}
       --input "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
       --out-swig scilab-renames.i
       --out-scilab sciloader.sce

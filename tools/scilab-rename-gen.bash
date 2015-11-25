@@ -27,6 +27,7 @@ variable name limit.
 
 The following arguments are required:
 
+    --module-name <module>             (e.g. Kernel)
     --input <rename_source_file.ren>
     --out-swig <renames.i>
     --out-scilab <sciloader.sce>
@@ -47,6 +48,10 @@ while [[ $# -ne 0 ]]; do
         -h|--help)
             usage
             exit 0
+            ;;
+        --module-name)
+            shift
+            moduleName="${1:?--module-name expects an argument.}"
             ;;
         --input)
             shift
@@ -107,6 +112,7 @@ operatorWrapperName() {
     esac
 }
 
+declare -r moduleName="${moduleName:?--module-name is a required argument.}"
 declare -r inputPath="${inputPath:?--input is a required argument.}"
 declare -r outSwigPath="${outSwigPath:?--out-swig is a required argument.}"
 declare -r outScilabPath="${outScilabPath:?--out-scilab is a required argument.}"
@@ -132,6 +138,8 @@ sayScilab() { echo "$@" >&$outScilabFd; }
 declare -r sciCgalRoot="cgal"
 sayScilab "mode(-1);"
 sayScilab "exec(fullfile(get_absolute_file_path('$(basename "$outScilabPath")'), '${innerLoaderPath}'));"
+# This function initializes the SWIG module (runtime type info, etc.).
+sayScilab "CGAL_${moduleName}_Scilab_Init();"
 sayScilab
 sayScilab "${sciCgalRoot} = struct();"
 
