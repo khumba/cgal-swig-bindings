@@ -7,9 +7,9 @@ l1 = new_Line_2(p2,p1);
 l2 = new_Line_2(p2,p2);
 l3 = new_Line_2(p1,p3);
 
-p4 = cgal.Line_2.to_vector(l1)
-cgal.Vector_2.toString(p4)
-p4 = cgal.Line_2.to_vector(l2)
-cgal.Vector_2.toString(p4)
-p4 = cgal.Line_2.to_vector(l3)
-cgal.Vector_2.toString(p4)
+v1 = cgal.Line_2.to_vector(l1);
+[cgal.Vector_2.x(v1), cgal.Vector_2.y(v1)]
+v2 = cgal.Line_2.to_vector(l2);
+[cgal.Vector_2.x(v2), cgal.Vector_2.y(v2)]
+v3 = cgal.Line_2.to_vector(l3);
+[cgal.Vector_2.x(v3), cgal.Vector_2.y(v3)]

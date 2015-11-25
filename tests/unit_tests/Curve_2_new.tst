@@ -19,7 +19,7 @@ cgal.Curve_2.is_line(c2)
 
 c3 = new_Curve_2(s1);
 cgal.Curve_2.is_line(c3)
-cgal.Curve_2.is_segment(c)
+cgal.Curve_2.is_segment(c3)
 cgal.Curve_2.is_ray(c3)
 
 

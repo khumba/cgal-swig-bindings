@@ -10,23 +10,17 @@ The identifier : libCGAL_Kernel_Scilab_path
 Shared archive loaded.
 Link done.
 p1 = new_Point_2(1,2);
- 
 p2 = new_Point_2(0,0);
- 
-p3 = cgal.Point_2.deepcopy(p1);
- 
-p4 = cgal.Point_2.equals(p1,p2)
- p4  =
+p3 = new_Point_2(1,2);
+cgal.Point_2.equals(p1,p2)
+ ans  =
  
   F  
- 
-p5 = cgal.Point_2.equals(p1,p3)
- p5  =
- 
-  F  
- 
-p6 = cgal.Point_2.equals(p2,p1)
- p6  =
+cgal.Point_2.equals(p1,p3)
+ ans  =
  
   T  
+cgal.Point_2.equals(p2,p3)
+ ans  =
  
+  F  

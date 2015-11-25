@@ -9,10 +9,10 @@ The identifier : libCGAL_Kernel_Scilab_path
 
 Shared archive loaded.
 Link done.
-p1 = new_Point_2(1,2);
-v1 = new_Vector_2(2,4);
-p2 = cgal.Point_2.minus(p1,v1);
-cgal.Point_2.toString(p2)
+l1 = new_Line_2(1, -1, 1);
+c1 = new_Curve_2(l1);
+l2 = cgal.Curve_2.line(c1);
+cgal.Line_2.toString(l2)
  ans  =
  
- -1 -2   
+ 1 -1 1   

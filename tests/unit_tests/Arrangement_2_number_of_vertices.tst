@@ -7,5 +7,6 @@ s1 = new_Segment_2(p1,p2);
 c1 = new_Curve_2(s1);
 
 cgal.Arrangement_2.number_of_vertices(a1)
+face_hndl = cgal.Arrangement_2.fictitious_face(a1);
 vertex_hndl = cgal.Arrangement_2.insert_in_face_interior(a1,p1,face_hndl);
 cgal.Arrangement_2.number_of_vertices(a1)

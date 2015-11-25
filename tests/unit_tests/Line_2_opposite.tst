@@ -1,15 +1,5 @@
 exec('build/SWIG_CGAL/Kernel/sciloader.sce', -1);
-p1 = new_Point_2(1,2);
-p2 = new_Point_2(0,0);
-p3 = new_Point_2(1,3);
 
-l1 = new_Line_2(p2,p1);
-l2 = new_Line_2(p2,p2);
-l3 = new_Line_2(p1,p3);
-
-p4 = cgal.Line_2.opposite(l1)
-cgal.Line_2.toString(p4)
-p4 = cgal.Line_2.opposite(l2)
-cgal.Line_2.toString(p4)
-p4 = cgal.Line_2.opposite(l3)
-cgal.Line_2.toString(p4)
+l1 = new_Line_2(1, -1, 1);
+l2 = cgal.Line_2.opposite(l1);
+[cgal.Line_2.a(l2), cgal.Line_2.b(l2), cgal.Line_2.c(l2)]
