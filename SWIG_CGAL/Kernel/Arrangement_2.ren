@@ -26,7 +26,6 @@ member insert_from_left_vertex
 member insert_from_right_vertex
 member insert_at_vertices
 member modify_vertex
-member modify_edge
 member split_edge
 member remove_isolated_vertex
 member merge_edge
