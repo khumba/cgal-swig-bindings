@@ -115,7 +115,7 @@ SWIG_CGAL_input_iterator_typemap_in_python_extra_function(Polygon_2::Polygon_2)
 %include "SWIG_CGAL/Kernel/Ray_2_decl.h"
 %include "SWIG_CGAL/Kernel/Direction_2_decl.h"
 %include "SWIG_CGAL/Kernel/Line_2_decl.h"
-%include "SWIG_CGAL/Kernel/Arrangement_2_decl.h"
+%include "SWIG_CGAL/Kernel/Arrangement_2.h"
 %include "SWIG_CGAL/Kernel/Curve_2_decl.h"
 %include "SWIG_CGAL/Kernel/Vector_2_decl.h"
 %include "SWIG_CGAL/Kernel/Point_3_decl.h"
