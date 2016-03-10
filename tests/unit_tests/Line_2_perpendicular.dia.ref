@@ -1,12 +1,4 @@
 exec('build/SWIG_CGAL/Kernel/sciloader.sce', -1);
-Warning :
-The identifier : libCGAL_Kernel_Scilab_path
- has been truncated to: libCGAL_Kernel_Scilab_pa.
-
-Warning :
-The identifier : libCGAL_Kernel_Scilab_path
- has been truncated to: libCGAL_Kernel_Scilab_pa.
-
 Shared archive loaded.
 Link done.
 l1 = new_Line_2(0, -1, 1);
