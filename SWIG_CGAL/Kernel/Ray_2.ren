@@ -1,0 +1,15 @@
+class Ray_2
+trait equatable
+member collinear_has_on
+member deepcopy
+member direction
+member has_on
+member is_degenerate
+member is_horizontal
+member is_vertical
+member opposite
+member point
+member source
+member supporting_line
+member toString
+member to_vector

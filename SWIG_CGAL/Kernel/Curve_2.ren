@@ -1,0 +1,11 @@
+class Curve_2
+member source
+member target
+member line
+member supporting_line
+member ray
+member segment
+member is_segment
+member is_ray
+member is_line
+member deepcopy

@@ -1,0 +1,10 @@
+class Direction_3
+trait equatable
+member deepcopy
+member delta
+member dx
+member dy
+member dz
+member operator-
+member toString
+member vector

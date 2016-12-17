@@ -1,0 +1,10 @@
+class Direction_2
+trait ordered
+member counterclockwise_in_between ccw_in_between
+member deepcopy
+member delta
+member dx
+member dy
+member operator-
+member toString
+member vector

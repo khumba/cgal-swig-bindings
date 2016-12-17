@@ -1,0 +1,11 @@
+class Point_3
+trait ordered
+member bbox
+member deepcopy
+member operator+
+member operator-
+member set_coordinates
+member toString
+member x
+member y
+member z

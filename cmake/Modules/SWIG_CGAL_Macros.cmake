@@ -137,3 +137,49 @@ MACRO(ADD_SWIG_CGAL_RUBY_MODULE packagename)
   endif()
 ENDMACRO(ADD_SWIG_CGAL_RUBY_MODULE)
 
+MACRO(ADD_SWIG_CGAL_SCILAB_MODULE packagename)
+  SET (MODULENAME "CGAL_${packagename}_Scilab")
+  SET (INTERFACE_FILES  "CGAL_${packagename}.i")
+
+  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+  INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+
+  #recover cpp files to be compiled
+  EXTRACT_CPP_AND_LIB_FILES(${ARGN})
+
+  SET_SOURCE_FILES_PROPERTIES(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)
+
+  #Build bindings for scilab
+  IF (BUILD_SCILAB)
+    #Generate files needed for Scilab function renaming.
+    ADD_CUSTOM_COMMAND(
+      OUTPUT scilab-renames.i sciloader.sce
+      MAIN_DEPENDENCY "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
+      COMMAND "${CMAKE_SOURCE_DIR}/tools/scilab-rename-gen.bash"
+      --input "${CMAKE_CURRENT_SOURCE_DIR}/scilab-renames.ren"
+      --out-swig scilab-renames.i
+      --out-scilab sciloader.sce
+      VERBATIM
+      COMMENT "Generating Scilab renames for package ${packagename}"
+      )
+
+    #Create a SWIG module for Scilab.
+    INCLUDE_DIRECTORIES("/usr/include/scilab")  # TODO Don't hardcode this path.
+    #We don't use a custom SCILAB_OUTDIR_PREFIX like other languages do.  The
+    #loader.sce for each package gets created in the current binary directory
+    #("CGAL_SWIG/${packagename}/") seemingly regardless of CMAKE_SWIG_OUTDIR,
+    #and it requires that the shared library containing the bindings be in the
+    #same directory.
+    SET (CMAKE_SWIG_OUTDIR "${CMAKE_CURRENT_BINARY_DIR}")
+    SET (CMAKE_SWIG_FLAGS -module CGAL_${packagename}_Scilab -DSWIG_CGAL_${packagename}_MODULE)
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../User_packages/${packagename}/extensions.i")
+      SET(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DSWIG_CGAL_HAS_${packagename}_USER_PACKAGE)
+    endif()
+    SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(CMAKE_MODULE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    SET(SWIG_MODULE_${MODULENAME}_EXTRA_DEPS scilab-renames.i)
+    SWIG_ADD_MODULE(${MODULENAME} scilab ${INTERFACE_FILES} ${object_files})
+    SWIG_LINK_LIBRARIES(${MODULENAME} ${libstolinkwith})
+  ENDIF()
+ENDMACRO(ADD_SWIG_CGAL_SCILAB_MODULE)

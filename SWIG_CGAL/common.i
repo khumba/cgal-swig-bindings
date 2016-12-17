@@ -309,7 +309,8 @@
 #endif
 
 //operator renaming for languages that does not support them
-#ifdef SWIGJAVA
+//KEEP THIS LIST IN SYNC WITH /scilab-gen.sh!
+#if defined(SWIGJAVA) || defined(SWIGSCILAB)
 %rename(plus) operator+;
 %rename(minus) operator-;
 %rename(times) operator*;

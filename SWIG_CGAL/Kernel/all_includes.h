@@ -14,6 +14,8 @@
 #include <SWIG_CGAL/Kernel/Direction_3.h>
 #include <SWIG_CGAL/Kernel/enum.h>
 #include <SWIG_CGAL/Kernel/Line_2.h>
+#include <SWIG_CGAL/Kernel/Arrangement_2.h>
+#include <SWIG_CGAL/Kernel/Curve_2.h>
 #include <SWIG_CGAL/Kernel/Line_3.h>
 #include <SWIG_CGAL/Kernel/Plane_3.h>
 #include <SWIG_CGAL/Kernel/Point_2.h>

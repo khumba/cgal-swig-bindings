@@ -1,0 +1,12 @@
+class Ray_3
+trait equatable
+member deepcopy
+member direction
+member has_on
+member is_degenerate
+member opposite
+member point
+member source
+member supporting_line
+member toString
+member to_vector
